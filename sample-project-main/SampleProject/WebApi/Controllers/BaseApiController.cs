@@ -20,5 +20,10 @@ namespace WebApi.Controllers
         {
             return ControllerContext.Request.CreateResponse(HttpStatusCode.NotFound);
         }
+
+        public HttpResponseMessage BadRequestResponse(string message)
+        {
+            return ControllerContext.Request.CreateResponse<string>(HttpStatusCode.BadRequest, message);
+        }
     }
 }

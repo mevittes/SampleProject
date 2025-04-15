@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Net.Http;
+using System.Web.Helpers;
 using System.Web.Http;
+using System.Xml.Linq;
 using BusinessEntities;
 using Core.Services.Users;
 using WebApi.Models.Users;
@@ -28,7 +30,17 @@ namespace WebApi.Controllers
         [HttpPost]
         public HttpResponseMessage CreateUser(Guid userId, [FromBody] UserModel model)
         {
-            var user = _createUserService.Create(userId, model.Name, model.Email, model.Type, model.AnnualSalary, model.Tags);
+            var validationErrors = _updateUserService.ValidateModelInputs(model.Name, model.Email, model.Type, model.Age, model.AnnualSalary, model.Tags);
+            if (validationErrors.Any())
+            {
+                return BadRequestResponse(string.Join(",", validationErrors));
+            }
+            var existingUser = _getUserService.GetUser(userId);
+            if (existingUser != null)
+            {
+                return BadRequestResponse("Record with the same ID already exists");
+            }
+            var user = _createUserService.Create(userId, model.Name, model.Email, model.Type, model.Age, model.AnnualSalary, model.Tags);
             return Found(new UserData(user));
         }
 
@@ -41,7 +53,13 @@ namespace WebApi.Controllers
             {
                 return DoesNotExist();
             }
-            _updateUserService.Update(user, model.Name, model.Email, model.Type, model.AnnualSalary, model.Tags);
+
+            var validationErrors = _updateUserService.ValidateModelInputs(model.Name, model.Email, model.Type, model.Age, model.AnnualSalary, model.Tags);
+            if (validationErrors.Any())
+            {
+                return BadRequestResponse(string.Join(",", validationErrors)); 
+            }
+            _updateUserService.Update(user, model.Name, model.Email, model.Type, model.Age, model.AnnualSalary, model.Tags);
             return Found(new UserData(user));
         }
 
@@ -89,7 +107,11 @@ namespace WebApi.Controllers
         [HttpGet]
         public HttpResponseMessage GetUsersByTag(string tag)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            var users = _getUserService.GetUsers(tag: tag)
+                                       .Select(q => new UserData(q))
+                                       .ToList();
+            return Found(users);
         }
     }
 }
