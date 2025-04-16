@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "26c5397e-2163-4643-ae23-13c5eb581e25",
+		"_postman_id": "cd677ea4-8e90-41e6-9196-4610b79b61ab",
 		"name": "LendingPad-SampleProject",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "30292534"
+		"_exporter_id": "44061401",
+		"_collection_link": "https://mariavittes.postman.co/workspace/Maria-Vittes's-Workspace~f5e0dcbf-f8b6-4a5e-8eee-381eae087d58/collection/44061401-cd677ea4-8e90-41e6-9196-4610b79b61ab?action=share&source=collection_link&creator=44061401"
 	},
 	"item": [
 		{
@@ -278,11 +279,335 @@
 			"item": [
 				{
 					"name": "Products",
-					"item": []
+					"item": [
+						{
+							"name": "Create Product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Wooden Table\",\r\n    \"price\": 55,\r\n    \"description\": \"wooden, square, counter-height table\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49834/products/7422740e-6426-4c46-8445-3f5274a62424/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"products",
+										"7422740e-6426-4c46-8445-3f5274a62424",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Wooden Table\",\r\n    \"price\": 45,\r\n    \"description\": \"wooden, square, counter-height table, 42-inch wide\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49834/products/7422740e-6426-4c46-8445-3f5274a62424/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"products",
+										"7422740e-6426-4c46-8445-3f5274a62424",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Product",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Mark Williams (updated)\",\r\n    \"email\": null,\r\n    \"type\": 2,\r\n    \"age\": 29,\r\n    \"annualSalary\": 80000,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49834/products/7422740e-6426-4c46-8445-3f5274a62424/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"products",
+										"7422740e-6426-4c46-8445-3f5274a62424",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Product By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:49834/products/7422740e-6426-4c46-8445-3f5274a62424",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"products",
+										"7422740e-6426-4c46-8445-3f5274a62424"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Products By Price",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:49834/products/list?skip=0&take=1000&price=45",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"products",
+										"list"
+									],
+									"query": [
+										{
+											"key": "skip",
+											"value": "0"
+										},
+										{
+											"key": "take",
+											"value": "1000"
+										},
+										{
+											"key": "price",
+											"value": "45"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				},
 				{
 					"name": "Orders",
-					"item": []
+					"item": [
+						{
+							"name": "Create Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"1422740e-6426-4c46-8445-3f5274a62424\",\r\n    \"date\": \"2025-04-15\",\r\n    \"productIds\": [\"7422740e-6426-4c46-8445-3f5274a62424\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49834/orders/5422740e-6426-4c46-8445-3f5274a62424/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"orders",
+										"5422740e-6426-4c46-8445-3f5274a62424",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"1422740e-6426-4c46-8445-3f5274a62424\",\r\n    \"date\": \"2025-04-10\",\r\n    \"productIds\": [\"7422740e-6426-4c46-8445-3f5274a62424\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49834/orders/5422740e-6426-4c46-8445-3f5274a62424/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"orders",
+										"5422740e-6426-4c46-8445-3f5274a62424",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Order",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Mark Williams (updated)\",\r\n    \"email\": null,\r\n    \"type\": 2,\r\n    \"age\": 29,\r\n    \"annualSalary\": 80000,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49834/orders/5422740e-6426-4c46-8445-3f5274a62424/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"orders",
+										"5422740e-6426-4c46-8445-3f5274a62424",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Order By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:49834/orders/5422740e-6426-4c46-8445-3f5274a62424",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"orders",
+										"5422740e-6426-4c46-8445-3f5274a62424"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Orders By UserId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:49834/orders/list?skip=0&take=1000&userId=1422740e-6426-4c46-8445-3f5274a62424",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"orders",
+										"list"
+									],
+									"query": [
+										{
+											"key": "skip",
+											"value": "0"
+										},
+										{
+											"key": "take",
+											"value": "1000"
+										},
+										{
+											"key": "userId",
+											"value": "1422740e-6426-4c46-8445-3f5274a62424"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Orders By ProductId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:49834/orders/list?skip=0&take=1000&productId=7422740e-6426-4c46-8445-3f5274a62424",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"orders",
+										"list"
+									],
+									"query": [
+										{
+											"key": "skip",
+											"value": "0"
+										},
+										{
+											"key": "take",
+											"value": "1000"
+										},
+										{
+											"key": "productId",
+											"value": "7422740e-6426-4c46-8445-3f5274a62424"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
