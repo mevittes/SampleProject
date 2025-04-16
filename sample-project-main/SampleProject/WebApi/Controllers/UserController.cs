@@ -81,6 +81,10 @@ namespace WebApi.Controllers
         public HttpResponseMessage GetUser(Guid userId)
         {
             var user = _getUserService.GetUser(userId);
+            if (user == null)
+            {
+                return DoesNotExist();
+            }
             return Found(new UserData(user));
         }
 
@@ -107,7 +111,6 @@ namespace WebApi.Controllers
         [HttpGet]
         public HttpResponseMessage GetUsersByTag(string tag)
         {
-            //throw new NotImplementedException();
             var users = _getUserService.GetUsers(tag: tag)
                                        .Select(q => new UserData(q))
                                        .ToList();

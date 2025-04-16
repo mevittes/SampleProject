@@ -34,11 +34,8 @@ namespace Data.Repositories
                 {
                     query = query.AndAlso();
                 }
-                else
-                {
-                    hasFirstParameter = true;
-                }
                 query = query.Where($"Name:*{name}*");
+                hasFirstParameter = true;
             }
 
             if (email != null)
@@ -48,6 +45,7 @@ namespace Data.Repositories
                     query = query.AndAlso();
                 }
                 query = query.WhereEquals("Email", email);
+                hasFirstParameter = true;
             }
 
             if (tag != null)

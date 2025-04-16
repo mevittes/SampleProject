@@ -28,6 +28,7 @@ namespace WebApi
             CoreConfiguration.Initialize(container, lifestyle);
 
             container.RegisterWebApiControllers(config);
+            container.Register(typeof(IInternalCache), typeof(InternalCache), Lifestyle.Singleton);
 
             container.Verify();
 
